@@ -1,0 +1,1 @@
+# serverless-bot-maven-plugin
