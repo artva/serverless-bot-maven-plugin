@@ -6,7 +6,7 @@
 
     <groupId>ru.artva.tg</groupId>
     <artifactId>serverless-bot-maven-plugin</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.3.0</version>
     <packaging>maven-plugin</packaging>
 
     <properties>

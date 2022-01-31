@@ -30,11 +30,13 @@ public class StartPollingMojo extends AbstractMojo {
     @Override
     public void execute() throws MojoExecutionException {
         try {
+            initProjectClassRealm(project);
             // needs to be synchronized
             synchronized (this) {
-                initProjectClassRealm(project);
-                WrappingPollingBot.start(handlerClassName, botName, botToken, getLog());
-                wait();
+                var botSession = WrappingPollingBot.start(handlerClassName, botName, botToken, getLog());
+                while (botSession.isRunning()) {
+                    wait(500L);
+                }
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
